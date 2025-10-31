@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory>tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <coverage>
+        <report>
+            <clover outputFile="coverage_php/clover.xml"/>
+            <html outputDirectory="coverage_php/html"/>
+            <text outputFile="coverage_php/coverage.txt"/>
+        </report>
+    </coverage>
+    <source>
+        <include>
+            <directory>app</directory>
+        </include>
+        <exclude>
+        </exclude>
+    </source>
+</phpunit>

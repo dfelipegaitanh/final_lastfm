@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+# Validate total commit message length (header + body + footer) is <= 150 characters
+
+if [ -z "$1" ] || [ ! -f "$1" ]; then
+  echo "❌ Error: No commit message file provided."
+  exit 1
+fi
+
+TOTAL_CHARS=$(wc -m < "$1" | tr -d ' ')
+# wc -m counts newline too; that's acceptable for a strict cap.
+
+MAX=150
+if [ "$TOTAL_CHARS" -gt "$MAX" ]; then
+  echo "❌ Error: Commit message too long ($TOTAL_CHARS chars). Maximum allowed is $MAX for the entire message."
+  echo "Tip: Keep the subject concise and move details to an issue or PR description."
+  exit 1
+fi
+
+echo "✅ Commit message length OK ($TOTAL_CHARS ≤ $MAX)."

@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Minimal pre-commit: run formatter defined in package.json and add any changes
+
+echo "Running formatter (npm run format)..."
+if ! npm run format; then
+  echo "❌ Error: Formatting failed. Please fix the formatting issues before committing."
+  exit 1
+fi
+
+# Re-add any files changed by the formatter to the commit
+if command -v git >/dev/null 2>&1; then
+  git add -A
+fi
+
+echo "✅ Formatting completed. Proceeding with commit."
+exit 0
+
